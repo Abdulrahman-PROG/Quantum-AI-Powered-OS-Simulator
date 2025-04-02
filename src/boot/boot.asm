@@ -42,3 +42,23 @@ gdt_end:
 gdt_descriptor:
     dw gdt_end - gdt_start - 1  ; Size
     dd gdt_start                ; Address
+
+mov eax, cr0
+or eax, 1              ; Set Protected Mode bit
+mov cr0, eax
+jmp 0x08:protected_mode ; Far jump to 32-bit code
+
+[bits 32]
+protected_mode:
+    mov ax, 0x10       ; Data segment selector
+    mov ds, ax
+    mov es, ax
+    mov fs, ax
+    mov gs, ax
+    mov ss, ax
+    mov esp, 0x90000   ; Set stack pointer
+    jmp 0x1000         ; Jump to kernel
+
+times 510-($-$$) db 0  ; Pad with zeros
+dw 0xaa55              ; Boot signature
+
