@@ -11,3 +11,9 @@ print_string:
     jmp .loop      ; Next character
 .done:
     ret
+
+start:
+    mov si, boot_msg
+    call print_string
+
+boot_msg db 'Quantum OS Booting...', 0
