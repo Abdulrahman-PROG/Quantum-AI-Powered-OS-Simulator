@@ -25,8 +25,8 @@ void test_process() {
     }
 }
 
-void kernel_main(void) __attribute__((noreturn));
-void kernel_main(void) {
+void _start(void) __attribute__((section(".text.start")));
+void _start(void) {
     print("Quantum OS Kernel Loading...\n");
     
     // Initialize memory management

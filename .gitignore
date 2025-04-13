@@ -1,0 +1,13 @@
+# Build directory
+build/
+*.o
+*.bin
+*.img
+
+# IDE files
+.vscode/
+.idea/
+
+# OS specific
+.DS_Store
+Thumbs.db 
