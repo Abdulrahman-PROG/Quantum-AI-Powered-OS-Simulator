@@ -1,6 +1,6 @@
 CC = gcc
 ASM = nasm
-CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector -nostartfiles -nodefaultlibs -Wall -Wextra -c
+CFLAGS = -m32 -nostdlib -nostdinc -fno-builtin -fno-stack-protector -nostartfiles -nodefaultlibs -Wall -Wextra -c -I$(SRC_DIR)/include
 ASMFLAGS = -f bin
 LDFLAGS = -m elf_i386 -T linker.ld
 
@@ -8,7 +8,7 @@ SRC_DIR = src
 BUILD_DIR = build
 OBJ_DIR = $(BUILD_DIR)/obj
 
-KERNEL_OBJS = $(OBJ_DIR)/kernel.o $(OBJ_DIR)/memory.o $(OBJ_DIR)/scheduler.o $(OBJ_DIR)/interrupts.o
+KERNEL_OBJS = $(OBJ_DIR)/kernel.o $(OBJ_DIR)/memory.o $(OBJ_DIR)/scheduler.o $(OBJ_DIR)/interrupts.o $(OBJ_DIR)/string.o $(OBJ_DIR)/interrupt_asm.o
 BOOT_OBJ = $(BUILD_DIR)/boot.bin
 
 .PHONY: all clean run debug
