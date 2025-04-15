@@ -1,21 +1,23 @@
 ENTRY(_start)
+OUTPUT_FORMAT(elf32-i386)
 SECTIONS {
-    . = 0x100000;
+    . = 0x1000;    /* Load kernel at 0x1000 */
     
-    .text : {
-        *(.text.start)
-        *(.text)
+    .text BLOCK(4K) : ALIGN(4K) {
+        *(.text.start)  /* Start with _start section */
+        *(.text)        /* Then other text sections */
     }
     
-    .rodata : {
+    .rodata BLOCK(4K) : ALIGN(4K) {
         *(.rodata)
     }
     
-    .data : {
+    .data BLOCK(4K) : ALIGN(4K) {
         *(.data)
     }
     
-    .bss : {
+    .bss BLOCK(4K) : ALIGN(4K) {
+        *(COMMON)
         *(.bss)
     }
     

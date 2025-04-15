@@ -3,10 +3,10 @@
 
 #include "types.h"
 
-void init_memory(uint32_t mem_size);
-void* alloc_frame();
-void free_frame(void* addr);
-uint32_t get_total_frames();
-uint32_t get_free_frames();
+void init_memory(size_t size);
+void* kmalloc(size_t size);
+void kfree(void* ptr);
+size_t get_used_memory(void);
+size_t get_total_memory(void);
 
 #endif // MEMORY_H 
