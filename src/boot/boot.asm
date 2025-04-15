@@ -61,7 +61,7 @@ protected_mode:
     mov gs, ax
     mov ss, ax
     mov esp, 0x90000   ; Set stack pointer
-    jmp 0x1000         ; Jump to kernel
+    jmp 0x100000       ; Jump to kernel
 
 gdt_start:
     dq 0x0000000000000000 ; Null descriptor
